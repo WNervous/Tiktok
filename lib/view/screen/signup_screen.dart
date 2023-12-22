@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok/constants.dart';
-import 'package:tiktok/view/screen/signup_screen.dart';
-import 'package:tiktok/view/widget/textfiled_widget.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+import '../../constants.dart';
+import '../widget/textfiled_widget.dart';
 
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({super.key});
+
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -17,17 +18,45 @@ class LoginScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Login",
+          "Register",
           style: TextStyle(
               color: buttonColor, fontSize: 35, fontWeight: FontWeight.w800),
+        ),
+        const SizedBox(height: 20),
+        Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.grey),
+              child: const Icon(Icons.person),
+            ),
+            InkWell(
+                onTap: () {
+                  print("photo");
+                },
+                child: Container(
+                    color: Colors.grey, child: const Icon(Icons.photo)))
+          ],
         ),
         const SizedBox(height: 20),
         Container(
           width: MediaQuery.of(context).size.width,
           margin: const EdgeInsets.symmetric(horizontal: 20),
           child: TextInputFiled(
+              controller: _usernameController,
+              labelText: "username",
+              iconData: Icons.person),
+        ),
+        const SizedBox(height: 30),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          child: TextInputFiled(
               controller: _emailController,
-              labelText: "email",
+              labelText: "emain",
               iconData: Icons.email),
         ),
         const SizedBox(height: 30),
@@ -42,7 +71,7 @@ class LoginScreen extends StatelessWidget {
         const SizedBox(height: 30),
         InkWell(
           onTap: () {
-            print("sign in");
+            print("Register");
           },
           child: Container(
             alignment: Alignment.center,
@@ -52,7 +81,7 @@ class LoginScreen extends StatelessWidget {
             decoration: BoxDecoration(
                 color: buttonColor, borderRadius: BorderRadius.circular(8)),
             child: const Text(
-              "Sign in",
+              "Register",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
@@ -65,18 +94,15 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Don't have accout?",
+              "Already have an accout?",
               style: TextStyle(fontSize: 18),
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return SignUpScreen();
-                }));
+                Navigator.of(context).pop();
               },
               child: Text(
-                "Register In",
+                "Login",
                 style: TextStyle(
                     color: buttonColor,
                     fontSize: 18,
