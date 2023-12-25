@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constants.dart';
 import '../widget/textfiled_widget.dart';
@@ -99,7 +100,7 @@ class SignUpScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).pop();
+                Get.back();
               },
               child: Text(
                 "Login",

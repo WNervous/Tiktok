@@ -1,0 +1,33 @@
+1.按照firebase添加项目后执行下面代码，
+官方参考文档
+https://firebase.google.com/docs/flutter/setup?authuser=0&hl=zh-cn&platform=android
+安装Firebase CLI ：
+登陆1.terminal:firebase login2.项目目录下执行：dart pub global activate flutterfire_cli
+配置：flutterfire configure
+
+返回失败
+ await Firebase.initializeApp().then((value) {
+    print("firebase initialize");
+    Get.put(AuthController());
+  });
+  
+  失败：
+E/flutter ( 6201): [ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: PlatformException(null-error, Host platform returned null value for non-null return value., null, null)
+E/flutter ( 6201): #0      FirebaseCoreHostApi.optionsFromResource (package:firebase_core_platform_interface/src/pigeon/messages.pigeon.dart:248:7)
+E/flutter ( 6201): <asynchronous suspension>
+E/flutter ( 6201): #1      MethodChannelFirebase.initializeApp (package:firebase_core_platform_interface/src/method_channel/method_channel_firebase.dart:89:25)
+E/flutter ( 6201): <asynchronous suspension>
+E/flutter ( 6201): #2      Firebase.initializeApp (package:firebase_core/src/firebase.dart:43:31)
+E/flutter ( 6201): <asynchronous suspension>
+E/flutter ( 6201): #3      main.<anonymous closure> (package:tiktok/main.dart:10:39)
+E/flutter ( 6201): <asynchronous suspension>
+E/flutter ( 6201): #4      main (package:tiktok/main.dart:10:3)
+E/flutter ( 6201): <asynchronous suspension>
+E/flutter ( 6201): 
+
+参考解决方案：
+https://stackoverflow.com/questions/72895721/firebasecloudmessaging-platformexception-platformexceptionnull-error-host-p
+
+2.firebase 如何解析zsh：找不到命令：macOS中的flutterfire
+https://www.saoniuhuo.com/question/detail-2220380.html
+
