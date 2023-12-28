@@ -10,10 +10,10 @@ import 'view/screen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp().then((value) {
-  // print("firebase initialize");
-  // Get.put(AuthController());
-  // });
+  await Firebase.initializeApp().then((value) {
+  print("firebase initialize");
+  Get.put(AuthController());
+  });
   runApp(const MyApp());
 }
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }

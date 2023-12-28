@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok/constants.dart';
+import 'package:tiktok/view/widget/custom_icon_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,13 +11,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int idx = 0;
-  PageController controller = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: idx,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: buttonColor,
+          unselectedItemColor: Colors.white,
           onTap: (index) {
             setState(() {
               idx = index;
@@ -29,37 +31,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   Icons.home,
                   size: 30,
                 ),
-                label: "HomeScreen"),
+                label: "Home"),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.search,
                   size: 30,
                 ),
-                label: "HomeScreen"),
+                label: "Search"),
+            BottomNavigationBarItem(icon: CustomIcon(), label: "Video"),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.message,
                   size: 30,
                 ),
-                label: "HomeScreen"),
+                label: "Messages"),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.person,
                   size: 30,
                 ),
-                label: "HomeScreen"),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  size: 30,
-                ),
-                label: "HomeScreen"),
+                label: "Profile"),
           ]),
-      body: PageView.builder(
-          controller: controller,
-          itemBuilder: (context, index) {
-            return pages[index];
-          }),
+      body: Center(child: pages[idx]),
     );
   }
 }
